@@ -17,6 +17,7 @@ templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
 app = FastAPI(title="PocketSmart AI")
 Base.metadata.create_all(bind=engine)
+(BASE_DIR / "static").mkdir(parents=True, exist_ok=True)
 app.mount("/static", StaticFiles(directory=str(BASE_DIR / "static")), name="static")
 UPLOAD_DIR = Path("uploads")
 UPLOAD_DIR.mkdir(exist_ok=True)
