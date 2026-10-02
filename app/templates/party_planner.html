@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>🎉 Party Budget Planner</h3>
+<form method="post" action="/generate-party">
+    <div class="mb-3"><label>Total Budget</label><input type="number" name="total_budget" class="form-control" required
+            value="40000"></div>
+    <div class="mb-3"><label>Guest Count</label><input type="number" name="guest_count" class="form-control" required
+            value="50"></div>
+    <div class="mb-3"><label>Event Type</label><select name="event_type" class="form-select">
+            <option>Birthday</option>
+            <option>Wedding</option>
+            <option>Corporate</option>
+            <option>Anniversary</option>
+        </select></div>
+    <div class="mb-3"><label>Venue Type</label><select name="venue_type" class="form-select">
+            <option>Indoor Hall</option>
+            <option>Outdoor Garden</option>
+            <option>Home</option>
+            <option>Banquet</option>
+        </select></div>
+    <button class="btn btn-success">Generate Party Plan ✨</button>
+</form>
+{% endblock %}

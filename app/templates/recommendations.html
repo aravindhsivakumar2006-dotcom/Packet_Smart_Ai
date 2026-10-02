@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>{{ category }} Recommendations - Budget Rs.{{ budget }}</h3>
+<a href="/dashboard" class="btn btn-sm btn-secondary mb-3">Back to Dashboard</a>
+{% if category == "Home Interior" %}
+<div class="row">
+    {% for item in result.recommendations %}
+    <div class="col-md-4 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h6>{{ item.name }}</h6>
+                <p><span class="badge bg-info">{{ item.platform }}</span> - Rs.{{ item.price }}</p>
+                <p>{{ item.reason }}</p>
+                <a href="{{ item.link }}" target="_blank" class="btn btn-sm btn-outline-primary">View on {{
+                    item.platform }}</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="alert alert-success">Total: Rs.{{ result.total_estimated }} | {{ result.saving_tip }}</div>
+{% elif category == "Party" %}
+<p>Allocation: Catering Rs.{{ result.allocation.catering }} | Decoration Rs.{{ result.allocation.decoration }} | Venue
+    Rs.{{ result.allocation.venue }}</p>
+<div class="row">
+    {% for item in result.recommendations %}
+    <div class="col-md-4 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h6><span class="badge bg-primary">{{ item.category }}</span> {{ item.name }}</h6>
+                <p>{{ item.platform }} - Rs.{{ item.price }}</p>
+                <p>{{ item.details }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-warning">{{ result.style_tip }}</div>
+<div class="row">
+    {% for item in result.recommendations %}
+    <div class="col-md-4 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h6>{{ item.name }}</h6>
+                <p><span class="badge bg-warning">{{ item.platform }}</span> - Rs.{{ item.price }}</p>
+                <p>{{ item.style_match }}</p>
+                <a href="{{ item.link }}" target="_blank" class="btn btn-sm btn-outline-dark">View</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

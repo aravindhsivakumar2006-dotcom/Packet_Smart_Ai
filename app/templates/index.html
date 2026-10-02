@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="hero text-center py-5">
+    <h1 class="display-4">PocketSmart AI: Your Smart Budget Assistant</h1>
+    <p class="lead">GenAI-powered recommendations for Home, Party & Jewelry within your budget</p>
+    {% if not user %}
+    <a href="/register" class="btn btn-primary btn-lg me-2">Get Started</a>
+    <a href="/login" class="btn btn-outline-light btn-lg">Login</a>
+    {% else %}
+    <a href="/dashboard" class="btn btn-light btn-lg">Go to Dashboard</a>
+    {% endif %}
+</div>
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5>🏠 Home Interior Planner</h5>
+                <p>Budget + Rooms. Get IKEA, Amazon, Flipkart suggestions.</p><a href="/home-planner"
+                    class="btn btn-sm btn-primary">Plan Home</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5>🎉 Party Budget Planner</h5>
+                <p>Budget, guests, event type. Get catering (Swiggy/Zomato), venue (OYO).</p><a href="/party-planner"
+                    class="btn btn-sm btn-success">Plan Party</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5>💍 Jewelry Planner</h5>
+                <p>Budget, occasion, style + outfit image. Matching jewelry.</p><a href="/jewelry-planner"
+                    class="btn btn-sm btn-warning">Plan Jewelry</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

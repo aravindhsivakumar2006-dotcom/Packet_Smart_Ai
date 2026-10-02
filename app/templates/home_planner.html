@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>🏠 Home Interior Budget Planner</h3>
+<form method="post" action="/generate-home">
+    <div class="mb-3"><label>Total Budget (Rs.)</label><input type="number" name="total_budget" class="form-control"
+            required min="1000" value="50000"></div>
+    <div class="mb-3"><label>Rooms & Quantities</label><textarea name="rooms" class="form-control"
+            required>Living Room x1, Bedroom x2, Kitchen x1 - Need lights, fans, tables</textarea></div>
+    <div class="mb-3"><label>Style Preferences</label><input type="text" name="preferences" class="form-control"
+            value="Modern minimal"></div>
+    <button class="btn btn-primary">Generate Recommendations ✨</button>
+</form>
+{% endblock %}

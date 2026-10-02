@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Your Recommendation History</h3>
+{% if history %}
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Category</th>
+        <th>Budget</th>
+        <th>Date</th>
+        <th>Input</th>
+    </tr>
+    {% for h in history %}<tr>
+        <td>{{ h.id }}</td>
+        <td>{{ h.category }}</td>
+        <td>Rs.{{ h.budget }}</td>
+        <td>{{ h.created_at }}</td>
+        <td>{{ h.input_data[:100] }}</td>
+    </tr>{% endfor %}
+</table>
+{% else %}<p>No history yet.</p>{% endif %}
+{% endblock %}

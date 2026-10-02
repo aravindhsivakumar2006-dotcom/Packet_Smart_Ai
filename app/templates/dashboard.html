@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Welcome {{ user.username }} 👋</h2>
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card bg-light">
+            <div class="card-body">
+                <h5>Home Planner</h5><a href="/home-planner" class="btn btn-primary">Start</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-light">
+            <div class="card-body">
+                <h5>Party Planner</h5><a href="/party-planner" class="btn btn-success">Start</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-light">
+            <div class="card-body">
+                <h5>Jewelry Planner</h5><a href="/jewelry-planner" class="btn btn-warning">Start</a>
+            </div>
+        </div>
+    </div>
+</div>
+<h4 class="mt-5">Recent Recommendations</h4>
+{% if history %}
+<table class="table">
+    <tr>
+        <th>Category</th>
+        <th>Budget</th>
+        <th>Date</th>
+    </tr>
+    {% for h in history %}<tr>
+        <td>{{ h.category }}</td>
+        <td>Rs.{{ h.budget }}</td>
+        <td>{{ h.created_at }}</td>
+    </tr>{% endfor %}
+</table>
+{% else %}<p>No history yet. Start planning!</p>{% endif %}
+{% endblock %}
